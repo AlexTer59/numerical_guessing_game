@@ -23,8 +23,7 @@ def is_true_num(rand_num, input_num):
 def main():
     print("Добро пожаловать в числовую угадайку")
     print("Введите число от 1 до 100")
-    # rand_num = random.randint(1, 100)
-    rand_num = 40
+    rand_num = random.randint(1, 100)
     input_num = input()
     while not is_valid(input_num):
         print("А может быть все-таки введем целое число от 1 до 100?")
@@ -44,7 +43,6 @@ def main():
             print("Вы угадали, поздравляем!")
             print("Спасибо, что играли в числовую угадайку. Еще увидимся...")
             break
-
 
 
 # Вызов главной программы
