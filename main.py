@@ -15,11 +15,15 @@ def is_true_num(rand_num, true_num):
     while true_num != rand_num:
         if true_num < rand_num:
             print("Ваше число меньше загаданного, попробуйте еще разок...")
+            global attempts
+            attempts += 1
             true_num = input()
             true_num = is_valid(true_num)
             continue
         elif true_num > rand_num:
             print("Ваше число больше загаданного, попробуйте еще разок...")
+            global attempts
+            attempts += 1
             true_num = input()
             true_num = is_valid(true_num)
             continue
@@ -28,6 +32,7 @@ def is_true_num(rand_num, true_num):
 
 # Главная прграмма
 
+attempts = 1
 print("Добро пожаловать в числовую угадайку!")
 print("Введите число от 1 до 100:")
 rand_num = random.randint(1, 100)
