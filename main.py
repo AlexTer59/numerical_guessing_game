@@ -2,48 +2,37 @@ import random
 
 
 # Проверка правильности введенного числа
-def is_valid(input_num):
-    if input_num.isdigit() and 1 <= int(input_num) <= 100:
-        return True
-    else:
-        return False
+def is_valid(val_num):
+    while not (val_num.isdigit() and 1 <= int(val_num) <= 100):
+        print("А может быть все-таки введем целое число от 1 до 100?")
+        val_num = input()
+        continue
+    return int(val_num)
 
 
 # Проверка равенства рандомного и введенного числа
-def is_true_num(rand_num, input_num):
-    if rand_num > int(input_num):
-        return -1
-    elif rand_num < int(input_num):
-        return -2
-    else:
-        return 1
+def is_true_num(rand_num, true_num):
+    while true_num != rand_num:
+        if true_num < rand_num:
+            print("Ваше число меньше загаданного, попробуйте еще разок...")
+            true_num = input()
+            true_num = is_valid(true_num)
+            continue
+        elif true_num > rand_num:
+            print("Ваше число больше загаданного, попробуйте еще разок...")
+            true_num = input()
+            true_num = is_valid(true_num)
+            continue
+    print("Вы угадали, поздравляем!")
 
 
 # Главная прграмма
-def main():
-    print("Добро пожаловать в числовую угадайку")
-    print("Введите число от 1 до 100")
-    rand_num = random.randint(1, 100)
-    input_num = input()
-    while not is_valid(input_num):
-        print("А может быть все-таки введем целое число от 1 до 100?")
-        input_num = input()
-        is_valid(input_num)
-    input_num = int(input_num)
-    while is_true_num(rand_num, input_num):
-        if is_true_num(rand_num, input_num) == -1:
-            print("Ваше число меньше загаданного, попробуйте еще разок")
-            input_num = input()
-            continue
-        elif is_true_num(rand_num, input_num) == -2:
-            print("Ваше число больше загаданного, попробуйте еще разок")
-            input_num = input()
-            continue
-        elif is_true_num(rand_num, input_num) == 1:
-            print("Вы угадали, поздравляем!")
-            print("Спасибо, что играли в числовую угадайку. Еще увидимся...")
-            break
 
+print("Добро пожаловать в числовую угадайку!")
+print("Введите число от 1 до 100:")
+rand_num = random.randint(1, 100)
+input_num = input()
+input_num = is_valid(input_num)
+is_true_num(rand_num, input_num)
+print("Спасибо, что играли в числовую угадайку. Еще увидимся...")
 
-# Вызов главной программы
-main()
